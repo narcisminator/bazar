@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+  
+ 	<head>
+    	<meta charset="utf-8" />
+    	<meta name="description" content="Periodically system" />
+
+    	<style>
+    		.div-table{
+  background-color:#eee;         
+  border:1px solid  #FFF;         
+ 
+}
+.div-table-row{
+  -webkit-flex: 1; /* Safari 6.1+ */
+    -ms-flex: 1; /* IE 10 */ 
+    flex: 1;
+  flex-wrap: wrap;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    min-width: 1080px;
+   
+}
+
+.div-table-col1{
+   width:64px;
+    height:64px;
+     border-width:1px;	
+    border-style:solid;
+    border-color:transparent;
+    display: -webkit-flex; /* Safari */
+    display: flex;   
+    flex-flow:column nowrap;
+}
+.div-table-col{
+  background-color:#ccc; 
+   width:64px;
+    height:64px;
+    border-width:1px;	
+    border-style:solid;
+    border-radius: 2px;
+    display: -webkit-flex; /* Safari */
+    display: flex;   
+    flex-flow:column nowrap;
+    
+-webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    transition: all 200ms linear;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index:1;
+}
+
+
+.div-table-col:hover{
+   
+-webkit-transform: scale(1.1) translateZ(0);
+    -moz-transform: scale(1.1) translateZ(0);
+    -o-transform: scale(1.1) translateZ(0);
+    transform: scale(4.1) translateZ(0);
+    z-index:1000;
+}
+.div-table-col div {
+    -webkit-flex-grow: 0; /* Safari 6.1+ */
+    -webkit-flex-shrink: 0; /* Safari 6.1+ */
+    -webkit-flex-basis: 16px; /* Safari 6.1+ */
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 16px;
+}
+.symbol{
+    font-weight: bolder;
+    text-align: center;
+}
+.atomicNumber
+{
+     height:25%;
+ font-weight: lighter;
+}
+
+
+.elementName
+{
+     height:15%;
+     
+    
+    text-align: center;
+    font-size:x-small;
+}
+.atomicMass
+{
+     height:10%;
+     text-align: center;
+     font-size:xx-small;
+}
+
+
+
+
+.alkalimetals{
+    background: -webkit-radial-gradient(farthest-corner at 90% 85%,pink,violet,tomato); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(farthest-corner at 90% 85%,pink,violet,tomato); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(farthest-corner at 90% 85%,pink,violet,tomato); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(farthest-corner at 90% 85%,pink,violet,tomato); /* Standard syntax (must be last) */
+}
+
+.alkaliearths{
+    background: -webkit-radial-gradient(farthest-corner at 90% 85%,tomato,#FF69B4,#FFB6C1); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(farthest-corner at 90% 85%,tomato,#FF69B4,#FFB6C1); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(farthest-corner at 90% 85%,tomato,#FF69B4,#FFB6C1); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(farthest-corner at 90% 85%,tomato,#FF69B4,#FFB6C1); /* Standard syntax (must be last) */
+}
+
+.transitionmetals{
+    background: -webkit-radial-gradient(farthest-corner at 90% 85%,#4169E1,#00BFFF); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(farthest-corner at 90% 85%,#4169E1,#00BFFF); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(farthest-corner at 90% 85%,#4169E1,#00BFFF); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(farthest-corner at 90% 85%,#4169E1,#00BFFF); /* Standard syntax (must be last) */
+}
+.basicmetals{
+    background: -webkit-radial-gradient(farthest-corner at 90% 85%,tomato,#FF69B4,#FFB6C1); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(farthest-corner at 90% 85%,tomato,#FF69B4,#FFB6C1); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(farthest-corner at 90% 85%,tomato,#FF69B4,#FFB6C1); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(farthest-corner at 90% 85%,#FF4500,#FFA500,#FFA07A); /* Standard syntax (must be last) */
+}
+.semimetals{
+    background: -webkit-radial-gradient(farthest-corner at 90% 85%,lime,#7FFF00,green); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(farthest-corner at 90% 85%,lime,#7FFF00,green); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(farthest-corner at 90% 85%,lime,#7FFF00,green); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(farthest-corner at 90% 85%,lime,#7FFF00,green); /* Standard syntax (must be last) */
+}
+.nonmetals{
+    background: -webkit-radial-gradient(farthest-corner at 90% 85%,#123456,cyan,#ABCDEF); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(farthest-corner at 90% 85%,#123456,cyan,#ABCDEF); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(farthest-corner at 90% 85%,#123456,cyan,#ABCDEF); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(farthest-corner at 90% 85%,#123456,cyan,#ABCDEF); /* Standard syntax (must be last) */
+}
+
+.halogens{
+    background: -webkit-radial-gradient(farthest-corner at 90% 85%,#123456,cyan,#ABCDEF); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(farthest-corner at 90% 85%,#123456,cyan,#ABCDEF); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(farthest-corner at 90% 85%,#123456,cyan,#ABCDEF); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(farthest-corner at 90% 85%,orange,#FFE4B5,#F4A460); /* Standard syntax (must be last) */
+}
+
+.noblegases{
+    background: -webkit-radial-gradient(farthest-corner at 90% 85%,#123456,cyan,#ABCDEF); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(farthest-corner at 90% 85%,#123456,cyan,#ABCDEF); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(farthest-corner at 90% 85%,#123456,cyan,#ABCDEF); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(farthest-corner at 90% 85%,#FFEFD5,#FFFF00,#F4A460); /* Standard syntax (must be last) */
+}
+.lanthanides{
+    background: -webkit-radial-gradient(farthest-corner at 90% 85%,#ADFF2F,#7FFF00); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(farthest-corner at 90% 85%,#ADFF2F,#7FFF00); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(farthest-corner at 90% 85%,#ADFF2F,#7FFF00); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(farthest-corner at 90% 85%,#ADFF2F,#7FFF00); /* Standard syntax (must be last) */
+}
+
+.actinides{
+    background: -webkit-radial-gradient(farthest-corner at 90% 85%,#DC143C,#F08080,#800000); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(farthest-corner at 90% 85%,#DC143C,#F08080,#800000); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(farthest-corner at 90% 85%,#DC143C,#F08080,#800000); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(farthest-corner at 90% 85%,#DC143C,#F08080,#800000); /* Standard syntax (must be last) */
+}
+
+    	</style>
+
+  	</head>
+  	<body>
+  		<div class="div-table">
+    <div class="div-table-row">
+        <div class="div-table-col nonmetals ">
+            <div class="atomicNumber">
+                <label>1</label>
+                <a style=" float: right;" target="_blank"  href="http://en.wikipedia.org/wiki/Hydrogen"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Wikipedia's_W.svg/50px-Wikipedia's_W.svg.png" alt="wiki" width="16" height="16"/></a>
+            </div>
+            <div class="symbol">H</div>
+            <div class="elementName">Hydrogen</div>
+            <div class="atomicMass">1.0079</div>
+        </div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+         <div class="div-table-col noblegases">
+            <div class="atomicNumber">2</div>
+            <div class="symbol">He</div>
+            <div class="elementName">Hellium</div>
+            <div class="atomicMass">4.0026</div>
+        </div>
+    </div>
+    <div class="div-table-row">
+         <div class="div-table-col alkalimetals">
+            <div class="atomicNumber">3</div>
+            <div class="symbol">Li</div>
+            <div class="elementName">Lithium</div>
+            <div class="atomicMass">6.941</div>
+        </div>
+         <div class="div-table-col alkaliearths">
+            <div class="atomicNumber">4</div>
+            <div class="symbol">Be</div>
+            <div class="elementName">Beryllium</div>
+            <div class="atomicMass">9.01218</div>
+        </div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+       <div class="div-table-col semimetals">
+            <div class="atomicNumber">5</div>
+            <div class="symbol">B</div>
+            <div class="elementName">Boron</div>
+            <div class="atomicMass">10.811</div>
+        </div>
+        <div class="div-table-col nonmetals">
+            <div class="atomicNumber">6</div>
+            <div class="symbol">C</div>
+            <div class="elementName">Carbon</div>
+            <div class="atomicMass">12.011</div>
+        </div>
+        <div class="div-table-col nonmetals">
+            <div class="atomicNumber">7</div>
+            <div class="symbol">N</div>
+            <div class="elementName">Nitrogen</div>
+            <div class="atomicMass">14.00674</div>
+        </div>
+         <div class="div-table-col nonmetals">
+            <div class="atomicNumber">8</div>
+            <div class="symbol">O</div>
+            <div class="elementName">Oxygen</div>
+            <div class="atomicMass">15.9994</div>
+        </div>
+          <div class="div-table-col halogens">
+            <div class="atomicNumber">9</div>
+            <div class="symbol">F</div>
+            <div class="elementName">Fluorine</div>
+            <div class="atomicMass">18.998403</div>
+        </div>
+          <div class="div-table-col noblegases">
+            <div class="atomicNumber">10</div>
+            <div class="symbol">Ne</div>
+            <div class="elementName">Neon</div>
+            <div class="atomicMass">20.1797</div>
+        </div>
+    </div>
+     <div class="div-table-row">
+       <div class="div-table-col alkalimetals">
+            <div class="atomicNumber">11</div>
+            <div class="symbol">Na</div>
+            <div class="elementName">Sodium</div>
+            <div class="atomicMass">22.989768</div>
+        </div>
+        <div class="div-table-col alkaliearths">
+            <div class="atomicNumber">12</div>
+            <div class="symbol">Mg</div>
+            <div class="elementName">Beryllium</div>
+            <div class="atomicMass">24.305</div>
+        </div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+        <div class="div-table-col1"></div>
+       <div class="div-table-col basicmetals">
+            <div class="atomicNumber">13</div>
+            <div class="symbol">Al</div>
+            <div class="elementName">Aluminium</div>
+            <div class="atomicMass">26.981539</div>
+        </div>
+        <div class="div-table-col semimetals">
+            <div class="atomicNumber">14</div>
+            <div class="symbol">Si</div>
+            <div class="elementName">Silicon</div>
+            <div class="atomicMass">28.085</div>
+        </div>
+        <div class="div-table-col nonmetals">
+            <div class="atomicNumber">15</div>
+            <div class="symbol">P</div>
+            <div class="elementName">Phosphorus</div>
+            <div class="atomicMass">30.973762</div>
+        </div>
+        <div class="div-table-col nonmetals">
+            <div class="atomicNumber">16</div>
+            <div class="symbol">S</div>
+            <div class="elementName">Sulfur</div>
+            <div class="atomicMass">32.066</div>
+        </div>
+          <div class="div-table-col halogens">
+            <div class="atomicNumber">17</div>
+            <div class="symbol">Cl</div>
+            <div class="elementName">Chlorine</div>
+            <div class="atomicMass">35.4527</div>
+        </div>
+          <div class="div-table-col noblegases">
+            <div class="atomicNumber">18</div>
+            <div class="symbol">Ar</div>
+            <div class="elementName">Argon</div>
+            <div class="atomicMass">39.948</div>
+        </div>
+    </div>
+     <div class="div-table-row">
+        <div class="div-table-col alkalimetals">
+            <div class="atomicNumber">19</div>
+            <div class="symbol">K</div>
+            <div class="elementName">Potassium</div>
+            <div class="atomicMass">39.0983</div>
+        </div>
+         <div class="div-table-col alkaliearths">
+            <div class="atomicNumber">20</div>
+            <div class="symbol">Ca</div>
+            <div class="elementName">Calcium</div>
+            <div class="atomicMass">40.078</div>
+        </div>
+       <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">21</div>
+            <div class="symbol">Sc</div>
+            <div class="elementName">Scandium</div>
+            <div class="atomicMass">44.95591</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">22</div>
+            <div class="symbol">Ti</div>
+            <div class="elementName">Titanium</div>
+            <div class="atomicMass">47.88</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">23</div>
+            <div class="symbol">V</div>
+            <div class="elementName">Vanadium</div>
+            <div class="atomicMass">50.9415</div>
+        </div>
+          <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">87</div>
+            <div class="symbol">Cr</div>
+            <div class="elementName">Francium</div>
+            <div class="atomicMass">51.9961</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">25</div>
+            <div class="symbol">Mn</div>
+            <div class="elementName">Manganese</div>
+            <div class="atomicMass">54.938</div>
+        </div>
+       <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">26</div>
+            <div class="symbol">Fe</div>
+            <div class="elementName">Iron</div>
+            <div class="atomicMass">55.847</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">27</div>
+            <div class="symbol">Co</div>
+            <div class="elementName">Cobalt</div>
+            <div class="atomicMass">58.9332</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">28</div>
+            <div class="symbol">Ni</div>
+            <div class="elementName">Nickel</div>
+            <div class="atomicMass">58.6934</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">29</div>
+            <div class="symbol">Cu</div>
+            <div class="elementName">Copper</div>
+            <div class="atomicMass">63.456</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">30</div>
+            <div class="symbol">Zn</div>
+            <div class="elementName">Zinc</div>
+            <div class="atomicMass">65.39</div>
+        </div>
+        <div class="div-table-col basicmetals">
+            <div class="atomicNumber">31</div>
+            <div class="symbol">Ga</div>
+            <div class="elementName">Gallium</div>
+            <div class="atomicMass">69.732</div>
+        </div>
+        <div class="div-table-col semimetals">
+            <div class="atomicNumber">32</div>
+            <div class="symbol">Ge</div>
+            <div class="elementName">Germanium</div>
+            <div class="atomicMass">72.64</div>
+        </div>
+         <div class="div-table-col semimetals">
+            <div class="atomicNumber">33</div>
+            <div class="symbol">As</div>
+            <div class="elementName">Arsenic</div>
+            <div class="atomicMass">74.92159</div>
+        </div>
+         <div class="div-table-col nonmetals">
+            <div class="atomicNumber">34</div>
+            <div class="symbol">Se</div>
+            <div class="elementName">Selenium</div>
+            <div class="atomicMass">78.96</div>
+        </div>
+        <div class="div-table-col halogens">
+            <div class="atomicNumber">35</div>
+            <div class="symbol">Br</div>
+            <div class="elementName">Bromine</div>
+            <div class="atomicMass">79.904</div>
+        </div>
+        <div class="div-table-col noblegases">
+            <div class="atomicNumber">36</div>
+            <div class="symbol">Kr</div>
+            <div class="elementName">Krypton</div>
+            <div class="atomicMass">83.8</div>
+        </div>
+    </div>
+    <div class="div-table-row">
+        <div class="div-table-col alkalimetals">
+            <div class="atomicNumber">37</div>
+            <div class="symbol">Rb</div>
+            <div class="elementName">Rubidium</div>
+            <div class="atomicMass">85.4678</div>
+        </div>
+         <div class="div-table-col alkaliearths">
+            <div class="atomicNumber">38</div>
+            <div class="symbol">Sr</div>
+            <div class="elementName">Strontium</div>
+            <div class="atomicMass">87.62</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">39</div>
+            <div class="symbol">Y</div>
+            <div class="elementName">Yttrium</div>
+            <div class="atomicMass">88.90585</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">40</div>
+            <div class="symbol">Zr</div>
+            <div class="elementName">Zirconium</div>
+            <div class="atomicMass">91.224</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">41</div>
+            <div class="symbol">Nb</div>
+            <div class="elementName">Niobium</div>
+            <div class="atomicMass">92.90638</div>
+        </div>
+          <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">42</div>
+            <div class="symbol">Mo</div>
+            <div class="elementName">Molybdenum</div>
+            <div class="atomicMass">95.94</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">43</div>
+            <div class="symbol">Tc</div>
+            <div class="elementName">Technetium</div>
+            <div class="atomicMass">98.9072</div>
+        </div>
+         <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">44</div>
+            <div class="symbol">Ru</div>
+            <div class="elementName">Ruthenium</div>
+            <div class="atomicMass">101.07</div>
+        </div>
+       <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">45</div>
+            <div class="symbol">Rh</div>
+            <div class="elementName">Rhodium</div>
+            <div class="atomicMass">102.9055</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">46</div>
+            <div class="symbol">Pd</div>
+            <div class="elementName">Palladium</div>
+            <div class="atomicMass">106.42</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">47</div>
+            <div class="symbol">Ag</div>
+            <div class="elementName">Silver</div>
+            <div class="atomicMass">107.8682</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">48</div>
+            <div class="symbol">Cd</div>
+            <div class="elementName">Cadmium</div>
+            <div class="atomicMass">112.411</div>
+        </div>
+       
+        <div class="div-table-col basicmetals">
+            <div class="atomicNumber">49</div>
+            <div class="symbol">In</div>
+            <div class="elementName">Indium</div>
+            <div class="atomicMass">114.818</div>
+        </div>
+        <div class="div-table-col basicmetals">
+            <div class="atomicNumber">50</div>
+            <div class="symbol">Sn</div>
+            <div class="elementName">Tin</div>
+            <div class="atomicMass">118.71</div>
+        </div>
+         <div class="div-table-col semimetals">
+            <div class="atomicNumber">51</div>
+            <div class="symbol">Sb</div>
+            <div class="elementName">Antimony</div>
+            <div class="atomicMass">121.76</div>
+        </div>
+        <div class="div-table-col semimetals">
+            <div class="atomicNumber">52</div>
+            <div class="symbol">Te</div>
+            <div class="elementName">Tellurium</div>
+            <div class="atomicMass">127.6</div>
+        </div>
+        <div class="div-table-col halogens">
+            <div class="atomicNumber">53</div>
+            <div class="symbol">I</div>
+            <div class="elementName">Iodine</div>
+            <div class="atomicMass">126.90447</div>
+        </div>
+        <div class="div-table-col noblegases">
+            <div class="atomicNumber">54</div>
+            <div class="symbol">Xe</div>
+            <div class="elementName">Xenon</div>
+            <div class="atomicMass">131.29</div>
+        </div>
+    </div>
+     <div class="div-table-row">
+        <div class="div-table-col alkalimetals">
+            <div class="atomicNumber">55</div>
+            <div class="symbol">Cs</div>
+            <div class="elementName">Cesium</div>
+            <div class="atomicMass">132.90543</div>
+        </div>
+        <div class="div-table-col alkaliearths">
+            <div class="atomicNumber">56</div>
+            <div class="symbol">Ba</div>
+            <div class="elementName">Barium</div>
+            <div class="atomicMass">137.327</div>
+        </div>
+        <div class="div-table-col1 lanthanides">
+            57-71
+        </div>
+        
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">72</div>
+            <div class="symbol">Hf</div>
+            <div class="elementName">Hafnium</div>
+            <div class="atomicMass">178.49</div>
+        </div>
+         <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">73</div>
+            <div class="symbol">Ta</div>
+            <div class="elementName">Tantalum</div>
+            <div class="atomicMass">180.9479</div>
+        </div>
+          <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">74</div>
+            <div class="symbol">W</div>
+            <div class="elementName">Tungsten</div>
+            <div class="atomicMass">183.85</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">75</div>
+            <div class="symbol">Re</div>
+            <div class="elementName">Rhenium</div>
+            <div class="atomicMass">186.207</div>
+        </div>
+       <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">76</div>
+            <div class="symbol">Os</div>
+            <div class="elementName">Osmium</div>
+            <div class="atomicMass">190.23</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">77</div>
+            <div class="symbol">Ir</div>
+            <div class="elementName">Iridium</div>
+            <div class="atomicMass">192.22</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">78</div>
+            <div class="symbol">Pt</div>
+            <div class="elementName">Platinum</div>
+            <div class="atomicMass">195.08</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">
+                <label>79</label>
+                <a style=" float: right;" target="_blank"  href="http://en.wikipedia.org/wiki/Gold"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Wikipedia's_W.svg/50px-Wikipedia's_W.svg.png" alt="wiki" width="16" height="16"/></a>
+            </div>
+            <div class="symbol">Au</div>
+            <div class="elementName">Gold</div>
+            <div class="atomicMass">196.9665</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">80</div>
+            <div class="symbol">Hg</div>
+            <div class="elementName">Mercury</div>
+            <div class="atomicMass">205.59</div>
+        </div>
+        <div class="div-table-col basicmetals">
+            <div class="atomicNumber">81</div>
+            <div class="symbol">Tl</div>
+            <div class="elementName">Thallium</div>
+            <div class="atomicMass">204.3833</div>
+        </div>
+        <div class="div-table-col basicmetals">
+            <div class="atomicNumber">82</div>
+            <div class="symbol">Pb</div>
+            <div class="elementName">Lead</div>
+            <div class="atomicMass">207.2</div>
+        </div>
+       <div class="div-table-col basicmetals">
+            <div class="atomicNumber">83</div>
+            <div class="symbol">Bi</div>
+            <div class="elementName">Bismuth</div>
+            <div class="atomicMass">208.98037</div>
+        </div>
+        <div class="div-table-col semimetals">
+            <div class="atomicNumber">84</div>
+            <div class="symbol">Po</div>
+            <div class="elementName">Polonium</div>
+            <div class="atomicMass">[208.9824]</div>
+        </div>
+        <div class="div-table-col halogens">
+            <div class="atomicNumber">85</div>
+            <div class="symbol">At</div>
+            <div class="elementName">Astatine</div>
+            <div class="atomicMass">209.9871</div>
+        </div>
+        <div class="div-table-col noblegases">
+            <div class="atomicNumber">86</div>
+            <div class="symbol">Rn</div>
+            <div class="elementName">Radon</div>
+            <div class="atomicMass">222.0176</div>
+        </div>
+    </div>
+<div class="div-table-row">
+        <div class="div-table-col alkalimetals">
+            <div class="atomicNumber">87</div>
+            <div class="symbol">Fr</div>
+            <div class="elementName">Francium</div>
+            <div class="atomicMass">223.0197</div>
+        </div>
+        <div class="div-table-col alkaliearths">
+            <div class="atomicNumber">88</div>
+            <div class="symbol">Ra</div>
+            <div class="elementName">Radium</div>
+            <div class="atomicMass">226.0254</div>
+        </div>
+        <div class="div-table-col1 actinides">
+            89-103
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">104</div>
+            <div class="symbol">Rf</div>
+            <div class="elementName">Rutherfordium</div>
+            <div class="atomicMass">[261]</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">105</div>
+            <div class="symbol">Db</div>
+            <div class="elementName">Dubnium</div>
+            <div class="atomicMass">[262]</div>
+        </div>
+          <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">106</div>
+            <div class="symbol">Sg</div>
+            <div class="elementName">Seaborgium</div>
+            <div class="atomicMass">[266]</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">107</div>
+            <div class="symbol">Bh</div>
+            <div class="elementName">Bohrium</div>
+            <div class="atomicMass">[264]</div>
+        </div>
+       <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">108</div>
+            <div class="symbol">Hs</div>
+            <div class="elementName">Hassium</div>
+            <div class="atomicMass">[269]</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">109</div>
+            <div class="symbol">Mt</div>
+            <div class="elementName">Meitnerium</div>
+            <div class="atomicMass">[268]</div>
+        </div>
+    <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">110</div>
+            <div class="symbol">Ds</div>
+            <div class="elementName">Darmstatdtium</div>
+            <div class="atomicMass">[269]</div>
+        </div>
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">111</div>
+            <div class="symbol">Rg</div>
+            <div class="elementName">Roentgenium</div>
+            <div class="atomicMass">[272]</div>
+        </div>
+        
+        <div class="div-table-col transitionmetals">
+            <div class="atomicNumber">112</div>
+            <div class="symbol">Cn</div>
+            <div class="elementName">Copernicium</div>
+            <div class="atomicMass">[277]</div>
+        </div>
+       <div class="div-table-col basicmetals">
+            <div class="atomicNumber">113</div>
+            <div class="symbol">Uut</div>
+            <div class="elementName">Ununtrium</div>
+            <div class="atomicMass">-</div>
+        </div>
+        <div class="div-table-col basicmetals">
+            <div class="atomicNumber">114</div>
+            <div class="symbol">Fl</div>
+            <div class="elementName">Flerovium</div>
+            <div class="atomicMass">[289]</div>
+        </div>
+        <div class="div-table-col basicmetals">
+            <div class="atomicNumber">115</div>
+            <div class="symbol">Uup</div>
+            <div class="elementName">Unupentium</div>
+            <div class="atomicMass">-</div>
+        </div>
+        <div class="div-table-col basicmetals">
+            <div class="atomicNumber">116</div>
+            <div class="symbol">Lv</div>
+            <div class="elementName">Livermorium</div>
+            <div class="atomicMass">[298]</div>
+        </div>
+        <div class="div-table-col halogens">
+            <div class="atomicNumber">117</div>
+            <div class="symbol">Uus</div>
+            <div class="elementName">Unuseptium</div>
+            <div class="atomicMass">-</div>
+        </div>
+        <div class="div-table-col noblegases">
+            <div class="atomicNumber">118</div>
+            <div class="symbol">Uuo</div>
+            <div class="elementName">Ununoctium</div>
+            <div class="atomicMass">-</div>
+        </div>
+    </div>
+</div>
+<br>
+     <div class="div-table-row">
+        <div class="div-table-col1">Lanthanide
+        </div>
+         <div class="div-table-col1">
+        </div>
+         <div class="div-table-col lanthanides">
+            <div class="atomicNumber">57</div>
+            <div class="symbol">La</div>
+            <div class="elementName">Lanthanum</div>
+            <div class="atomicMass">138.9055</div>
+        </div>
+        <div class="div-table-col lanthanides">
+            <div class="atomicNumber">58</div>
+            <div class="symbol">Ce</div>
+            <div class="elementName">Cerium</div>
+            <div class="atomicMass">140.115</div>
+        </div>
+        <div class="div-table-col lanthanides">
+            <div class="atomicNumber">59</div>
+            <div class="symbol">Pr</div>
+            <div class="elementName">Praseodymium</div>
+            <div class="atomicMass">140.90765</div>
+        </div>
+        <div class="div-table-col lanthanides">
+            <div class="atomicNumber">60</div>
+            <div class="symbol">Nd</div>
+            <div class="elementName">Neodymium</div>
+            <div class="atomicMass">144.24</div>
+        </div>
+          <div class="div-table-col lanthanides">
+            <div class="atomicNumber">61</div>
+            <div class="symbol">Pm</div>
+            <div class="elementName">Promehium</div>
+            <div class="atomicMass">144.9127</div>
+        </div>
+        <div class="div-table-col lanthanides">
+            <div class="atomicNumber">62</div>
+            <div class="symbol">Sm</div>
+            <div class="elementName">Samarium</div>
+            <div class="atomicMass">150.36</div>
+        </div>
+         <div class="div-table-col lanthanides">
+            <div class="atomicNumber">63</div>
+            <div class="symbol">Eu</div>
+            <div class="elementName">Europium</div>
+            <div class="atomicMass">151.9655</div>
+        </div>
+       <div class="div-table-col lanthanides">
+            <div class="atomicNumber">64</div>
+            <div class="symbol">Gd</div>
+            <div class="elementName">Gadolinium</div>
+            <div class="atomicMass">157.25</div>
+        </div>
+        <div class="div-table-col lanthanides">
+            <div class="atomicNumber">65</div>
+            <div class="symbol">Tb</div>
+            <div class="elementName">Terbium</div>
+            <div class="atomicMass">158.92534</div>
+        </div>
+        <div class="div-table-col lanthanides">
+            <div class="atomicNumber">66</div>
+            <div class="symbol">Dy</div>
+            <div class="elementName">Dysprosium</div>
+            <div class="atomicMass">162.5</div>
+        </div>
+        <div class="div-table-col lanthanides">
+            <div class="atomicNumber">67</div>
+            <div class="symbol">Ho</div>
+            <div class="elementName">Holmium</div>
+            <div class="atomicMass">164.93032</div>
+        </div>
+       
+        <div class="div-table-col lanthanides">
+            <div class="atomicNumber">68</div>
+            <div class="symbol">Er</div>
+            <div class="elementName">Erbium</div>
+            <div class="atomicMass">167.26</div>
+        </div>
+        <div class="div-table-col lanthanides">
+            <div class="atomicNumber">69</div>
+            <div class="symbol">Tm</div>
+            <div class="elementName">Thullum</div>
+            <div class="atomicMass">168.93421</div>
+        </div>
+         <div class="div-table-col lanthanides">
+            <div class="atomicNumber">70</div>
+            <div class="symbol">Yb</div>
+            <div class="elementName">Ytterbium</div>
+            <div class="atomicMass">173.04</div>
+        </div>
+        <div class="div-table-col lanthanides">
+            <div class="atomicNumber">71</div>
+            <div class="symbol">Lu</div>
+            <div class="elementName">Lutetium</div>
+            <div class="atomicMass">174.967</div>
+        </div>
+       
+    </div>
+     <div class="div-table-row">
+        <div class="div-table-col1">Actinide
+        </div>
+         <div class="div-table-col1">&nbsp;
+        </div>
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">89</div>
+            <div class="symbol">Ac</div>
+            <div class="elementName">Actinium</div>
+            <div class="atomicMass">227.0278</div>
+        </div>
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">90</div>
+            <div class="symbol">Th</div>
+            <div class="elementName">Zirconium</div>
+            <div class="atomicMass">232.0381</div>
+        </div>
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">91</div>
+            <div class="symbol">Pa</div>
+            <div class="elementName">Protectinium</div>
+            <div class="atomicMass">231.03588</div>
+        </div>
+          <div class="div-table-col actinides">
+            <div class="atomicNumber">92</div>
+            <div class="symbol">U</div>
+            <div class="elementName">Uranium</div>
+            <div class="atomicMass">231.03588</div>
+        </div>
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">93</div>
+            <div class="symbol">Np</div>
+            <div class="elementName">Neptunium</div>
+            <div class="atomicMass">237.0482</div>
+        </div>
+         <div class="div-table-col actinides">
+            <div class="atomicNumber">94</div>
+            <div class="symbol">Pu</div>
+            <div class="elementName">Pluthonium</div>
+            <div class="atomicMass">244.0642</div>
+        </div>
+       <div class="div-table-col actinides">
+            <div class="atomicNumber">95</div>
+            <div class="symbol">Am</div>
+            <div class="elementName">Americium</div>
+            <div class="atomicMass">243.0614</div>
+        </div>
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">96</div>
+            <div class="symbol">Cm</div>
+            <div class="elementName">Currium</div>
+            <div class="atomicMass">247.0703</div>
+        </div>
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">97</div>
+            <div class="symbol">Bk</div>
+            <div class="elementName">Berkellium</div>
+            <div class="atomicMass">247.0703</div>
+        </div>
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">98</div>
+            <div class="symbol">Cf</div>
+            <div class="elementName">Californium</div>
+            <div class="atomicMass">251.0796</div>
+        </div>
+       
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">99</div>
+            <div class="symbol">Es</div>
+            <div class="elementName">Einsteinium</div>
+            <div class="atomicMass">[254]</div>
+        </div>
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">100</div>
+            <div class="symbol">Fm</div>
+            <div class="elementName">Fermium</div>
+            <div class="atomicMass">257.0951</div>
+        </div>
+         <div class="div-table-col actinides">
+            <div class="atomicNumber">101</div>
+            <div class="symbol">Md</div>
+            <div class="elementName">Mendelevium</div>
+            <div class="atomicMass">258.1</div>
+        </div>
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">102</div>
+            <div class="symbol">No</div>
+            <div class="elementName">Nobelium</div>
+            <div class="atomicMass">259.1009</div>
+        </div>
+        <div class="div-table-col actinides">
+            <div class="atomicNumber">103</div>
+            <div class="symbol">Lr</div>
+            <div class="elementName">Lawrencium</div>
+            <div class="atomicMass">[262]</div>
+        </div>
+        
+    </div>
+<br/>
+<div class="div-table-row">
+    <div class="alkalimetals">Alkali metals</div>
+    <div class="alkaliearths">Alkali earths</div>
+    <div class="transitionmetals">Transition  metals</div>
+    <div class="basicmetals">Basic metals</div>       
+    <div class="semimetals">Semi metals</div>
+    <div class="nonmetals">Nonmetals</div>
+    <div class="halogens">Halogens</div>
+    <div class="noblegases">Noble gases</div>
+    <div class="lanthanides">Lanthanides</div>
+    <div class="actinides">Actinides</div>
+</div>
+    <br/>
+    <details>
+  <summary>Copyright 2015.</summary>
+  <p> - by Narcisminator. All Rights Reserved.</p>
+  <p>All content and graphics on this web site are the property of the company $ofton.</p>
+</details>
+  	</body>
+</html>
